@@ -10,6 +10,10 @@ import {
   ShieldCheck,
   MapPin,
   Mail,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
 } from 'lucide-react';
 
 const Dashboard = ({
