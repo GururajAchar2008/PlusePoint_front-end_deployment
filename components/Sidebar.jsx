@@ -2,11 +2,8 @@ import React from 'react';
 import { 
   LayoutDashboard, 
   Stethoscope, 
-  ClipboardList, 
-  Users, 
   FileHeart, 
   AlertCircle,
-  ShieldCheck,
   Dna,
   X
 } from 'lucide-react';
@@ -15,12 +12,9 @@ const Sidebar = ({ currentView, onChangeView, isOpen, setIsOpen }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Home', icon: LayoutDashboard },
     { id: 'symptoms', label: 'Symptom Checker', icon: Stethoscope },
-    { id: 'registration', label: 'Get Token', icon: ClipboardList },
-    { id: 'queue', label: 'Live Queue', icon: Users },
     { id: 'health-record', label: 'Health Record', icon: FileHeart },
     { id: 'precision-medicine', label: 'Precision Medicine', icon: Dna },
     { id: 'emergency', label: 'Emergency Help', icon: AlertCircle, variant: 'danger' },
-    { id: 'admin', label: 'Doctor Admin', icon: ShieldCheck, variant: 'admin' },
   ];
 
   const handleNavClick = (id) => {
@@ -73,7 +67,6 @@ const Sidebar = ({ currentView, onChangeView, isOpen, setIsOpen }) => {
             {menuItems.map((item) => {
               const isActive = currentView === item.id;
               const isDanger = item.variant === 'danger';
-              const isAdmin = item.variant === 'admin';
               
               let baseClasses = "flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer mb-1";
               let activeClasses = "";
@@ -82,9 +75,6 @@ const Sidebar = ({ currentView, onChangeView, isOpen, setIsOpen }) => {
               if (isDanger) {
                 activeClasses = "bg-red-50 text-red-600 shadow-sm";
                 inactiveClasses = "text-red-600 hover:bg-red-50";
-              } else if (isAdmin) {
-                activeClasses = "bg-slate-800 text-white shadow-md";
-                inactiveClasses = "text-slate-600 hover:bg-slate-100 mt-8 border-t border-slate-100 pt-4";
               } else {
                 activeClasses = "bg-medical-50 text-medical-700 shadow-sm ring-1 ring-medical-200";
                 inactiveClasses = "text-slate-600 hover:bg-slate-50 hover:text-medical-600";

@@ -42,17 +42,6 @@ export const hospitalApi = {
     });
     return payload;
   },
-  doctorLogin: async ({ username, password }) => {
-    const payload = await request("/api/docter/login", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-    });
-    return payload.doctor || null;
-  },
-  getQueueData: async () => {
-    const payload = await request("/api/queue");
-    return payload.queue || [];
-  },
   getLatestPatient: async () => {
     const payload = await request("/api/patients/latest");
     return payload.patient || null;
@@ -63,24 +52,6 @@ export const hospitalApi = {
       body: JSON.stringify(patient),
     });
     return payload.patient || null;
-  },
-  getAppointments: async () => {
-    const payload = await request("/api/appointments");
-    return payload.appointments || [];
-  },
-  createAppointment: async (appointment) => {
-    const payload = await request("/api/appointments", {
-      method: "POST",
-      body: JSON.stringify(appointment),
-    });
-    return payload.appointment;
-  },
-  updateAppointmentStatus: async (id, status) => {
-    const payload = await request(`/api/appointments/${id}/status`, {
-      method: "PATCH",
-      body: JSON.stringify({ status }),
-    });
-    return payload.appointment;
   },
   resetDemoData: () =>
     request("/api/demo/reset", {

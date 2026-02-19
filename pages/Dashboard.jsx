@@ -1,11 +1,10 @@
 import React from 'react';
 import { 
-  Users, 
   Clock, 
-  Calendar, 
   Activity,
   ArrowRight,
   Stethoscope,
+  Dna,
   Star,
   Phone,
   ShieldCheck,
@@ -20,7 +19,6 @@ import {
 const Dashboard = ({
   onNavigate,
   departments = [],
-  doctors = [],
   testimonials = [],
 }) => {
   return (
@@ -48,22 +46,22 @@ const Dashboard = ({
             <span className="text-medical-200">Faster Patient Care</span>
           </h1>
           <p className="text-lg md:text-xl text-medical-50 mb-10 leading-relaxed max-w-2xl opacity-90">
-            Skip the waiting room. Check symptoms instantly, get your digital token from home, and track your queue status in real-time.
+            Check symptoms instantly, maintain your health record, and use precision medicine tools from one platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
-              onClick={() => onNavigate('registration')}
-              className="px-8 py-4 bg-white text-medical-700 font-bold rounded-xl hover:bg-medical-50 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
-            >
-              <Calendar className="w-5 h-5" />
-              Book Token
-            </button>
-            <button 
               onClick={() => onNavigate('symptoms')}
-              className="px-8 py-4 bg-medical-500 text-white font-bold rounded-xl hover:bg-medical-400 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 border border-medical-400"
+              className="px-8 py-4 bg-white text-medical-700 font-bold rounded-xl hover:bg-medical-50 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
               <Stethoscope className="w-5 h-5" />
               Check Symptoms
+            </button>
+            <button 
+              onClick={() => onNavigate('health-record')}
+              className="px-8 py-4 bg-medical-500 text-white font-bold rounded-xl hover:bg-medical-400 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 border border-medical-400"
+            >
+              <ShieldCheck className="w-5 h-5" />
+              Health Record
             </button>
           </div>
         </div>
@@ -76,7 +74,7 @@ const Dashboard = ({
           <p className="text-slate-500 mt-2 max-w-2xl mx-auto">We combine advanced technology with compassionate care to provide the best medical experience.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div 
             onClick={() => onNavigate('symptoms')}
             className="group bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer"
@@ -88,34 +86,6 @@ const Dashboard = ({
             <p className="text-slate-500 text-sm mb-4">AI-powered guidance to help you find the right specialist instantly.</p>
             <span className="text-purple-600 text-sm font-semibold flex items-center group-hover:gap-2 transition-all">
               Try Now <ArrowRight className="w-4 h-4 ml-1" />
-            </span>
-          </div>
-
-          <div 
-            onClick={() => onNavigate('queue')}
-            className="group bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer"
-          >
-            <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Users className="w-7 h-7 text-orange-600" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Live Queue Status</h3>
-            <p className="text-slate-500 text-sm mb-4">Monitor your token number from home and arrive just in time.</p>
-            <span className="text-orange-600 text-sm font-semibold flex items-center group-hover:gap-2 transition-all">
-              View Queue <ArrowRight className="w-4 h-4 ml-1" />
-            </span>
-          </div>
-
-          <div 
-            onClick={() => onNavigate('registration')}
-            className="group bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer"
-          >
-             <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Calendar className="w-7 h-7 text-blue-600" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Pre-Registration</h3>
-            <p className="text-slate-500 text-sm mb-4">Book your appointment online and skip the paperwork at the counter.</p>
-            <span className="text-blue-600 text-sm font-semibold flex items-center group-hover:gap-2 transition-all">
-              Book Now <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </div>
 
@@ -132,6 +102,20 @@ const Dashboard = ({
               Access Records <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </div>
+
+          <div 
+            onClick={() => onNavigate('precision-medicine')}
+            className="group bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer"
+          >
+             <div className="w-14 h-14 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Dna className="w-7 h-7 text-indigo-600" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">Precision Medicine</h3>
+            <p className="text-slate-500 text-sm mb-4">Upload VCF data and get pharmacogenomic risk analysis with recommendations.</p>
+            <span className="text-indigo-600 text-sm font-semibold flex items-center group-hover:gap-2 transition-all">
+              Analyze Now <ArrowRight className="w-4 h-4 ml-1" />
+            </span>
+          </div>
         </div>
       </section>
 
@@ -140,15 +124,9 @@ const Dashboard = ({
         <div className="container mx-auto px-4 md:px-8">
            <div className="flex flex-col md:flex-row justify-between items-center mb-10">
               <div>
-                <h2 className="text-3xl font-bold text-slate-800">Current Wait Times</h2>
-                <p className="text-slate-500 mt-2">Live updates from our departments</p>
+                <h2 className="text-3xl font-bold text-slate-800">Department Overview</h2>
+                <p className="text-slate-500 mt-2">Quick snapshot of department capacity</p>
               </div>
-              <button 
-                onClick={() => onNavigate('queue')}
-                className="mt-4 md:mt-0 text-medical-600 font-semibold border border-medical-200 px-6 py-2 rounded-lg hover:bg-medical-50 transition-colors"
-              >
-                See Full Queue Monitor
-              </button>
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -176,51 +154,7 @@ const Dashboard = ({
         </div>
       </section>
 
-      {/* 4. Our Doctors */}
-      <section className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-slate-800">Meet Our Specialists</h2>
-          <p className="text-slate-500 mt-2">Top-rated doctors dedicated to your health</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {doctors.map((doctor) => (
-            <div key={doctor.id} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 group">
-              <div className="h-64 overflow-hidden relative">
-                <img 
-                  src={doctor.image} 
-                  alt={doctor.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white font-medium text-sm">Book Appointment</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                     <h3 className="font-bold text-slate-800 text-lg">{doctor.name}</h3>
-                     <p className="text-medical-600 text-sm font-medium">{doctor.specialty}</p>
-                  </div>
-                  <div className="flex items-center bg-yellow-50 px-2 py-1 rounded text-yellow-600 text-xs font-bold">
-                    <Star className="w-3 h-3 mr-1 fill-current" />
-                    {doctor.rating}
-                  </div>
-                </div>
-                <p className="text-slate-400 text-xs mb-4">{doctor.experience}</p>
-                <button 
-                  onClick={() => onNavigate('registration')}
-                  className="w-full py-2.5 rounded-lg border border-slate-200 text-slate-600 font-semibold hover:bg-medical-600 hover:text-white hover:border-medical-600 transition-colors"
-                >
-                  Consult Now
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Emergency Banner */}
+      {/* 4. Emergency Banner */}
       <section className="container mx-auto px-4">
         <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-3xl p-8 md:p-12 text-white shadow-2xl shadow-red-200 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
            {/* Decorative circles */}
@@ -251,7 +185,7 @@ const Dashboard = ({
         </div>
       </section>
 
-      {/* 6. Testimonials */}
+      {/* 5. Testimonials */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-slate-800">Patient Stories</h2>
@@ -304,9 +238,8 @@ const Dashboard = ({
                 <h4 className="text-white font-bold mb-6">Quick Links</h4>
                 <ul className="space-y-4 text-sm">
                   <li><button onClick={() => onNavigate('dashboard')} className="hover:text-medical-400 transition-colors">Home</button></li>
-                  <li><button onClick={() => onNavigate('registration')} className="hover:text-medical-400 transition-colors">Book Appointment</button></li>
                   <li><button onClick={() => onNavigate('symptoms')} className="hover:text-medical-400 transition-colors">Symptom Checker</button></li>
-                  <li><button onClick={() => onNavigate('admin')} className="hover:text-medical-400 transition-colors">Doctors Login</button></li>
+                  <li><button onClick={() => onNavigate('precision-medicine')} className="hover:text-medical-400 transition-colors">Precision Medicine</button></li>
                 </ul>
               </div>
 

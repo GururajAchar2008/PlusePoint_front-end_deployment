@@ -3,29 +3,22 @@ import { Menu } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import SymptomChecker from "./pages/SymptomChecker";
-import Registration from "./pages/Registration";
-import QueueMonitor from "./pages/QueueMonitor";
 import Emergency from "./pages/Emergency";
 import HealthRecord from "./pages/HealthRecord";
-import DoctorDashboard from "./pages/DoctorDashboard";
 import PrecisionMedicine from "./pages/PrecisionMedicine";
 import { hospitalApi } from "./services/api";
-import DocterLogin from "./pages/DocterLogin";
 
 const INITIAL_REFERENCE_DATA = {
   departments: [],
   symptoms: [],
-  doctors: [],
   testimonials: [],
 };
 
 const App = () => {
   const [currentView, setCurrentView] = useState("dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [preSelectedDept, setPreSelectedDept] = useState(undefined);
   const [referenceData, setReferenceData] = useState(INITIAL_REFERENCE_DATA);
   const [loadError, setLoadError] = useState("");
-  const [authenticatedDoctor, setAuthenticatedDoctor] = useState(null);
 
   const loadReferenceData = async () => {
     try {
@@ -33,7 +26,6 @@ const App = () => {
       setReferenceData({
         departments: data.departments || [],
         symptoms: data.symptoms || [],
-        doctors: data.doctors || [],
         testimonials: data.testimonials || [],
       });
       setLoadError("");
@@ -48,23 +40,6 @@ const App = () => {
 
   const handleNavigate = (view) => {
     setCurrentView(view);
-    // Reset pre-selection when leaving reg page
-    if (view !== "registration") {
-      setPreSelectedDept(undefined);
-    }
-  };
-
-  const handleBookNow = (dept) => {
-    setPreSelectedDept(dept);
-    setCurrentView('registration');
-  };
-
-  const handleDoctorLoginSuccess = (doctor) => {
-    setAuthenticatedDoctor(doctor);
-  };
-
-  const handleDoctorLogout = () => {
-    setAuthenticatedDoctor(null);
   };
 
   const renderContent = () => {
@@ -74,43 +49,27 @@ const App = () => {
           <Dashboard
             onNavigate={handleNavigate}
             departments={referenceData.departments}
-            doctors={referenceData.doctors}
             testimonials={referenceData.testimonials}
           />
         );
       case "symptoms":
-        return <SymptomChecker onBookNow={handleBookNow} symptoms={referenceData.symptoms} />;
-      case "registration":
         return (
-          <Registration
-            preSelectedDept={preSelectedDept}
-            departments={referenceData.departments}
+          <SymptomChecker
+            onContinue={() => handleNavigate("health-record")}
+            symptoms={referenceData.symptoms}
           />
         );
-      case "queue":
-        return <QueueMonitor departments={referenceData.departments} />;
       case "emergency":
         return <Emergency />;
       case "health-record":
         return <HealthRecord />;
       case "precision-medicine":
         return <PrecisionMedicine />;
-      case "admin":
-        return authenticatedDoctor ? (
-          <DoctorDashboard
-            departments={referenceData.departments}
-            doctor={authenticatedDoctor}
-            onLogout={handleDoctorLogout}
-          />
-        ) : (
-          <DocterLogin onLoginSuccess={handleDoctorLoginSuccess} />
-        );
       default:
         return (
           <Dashboard
             onNavigate={handleNavigate}
             departments={referenceData.departments}
-            doctors={referenceData.doctors}
             testimonials={referenceData.testimonials}
           />
         );

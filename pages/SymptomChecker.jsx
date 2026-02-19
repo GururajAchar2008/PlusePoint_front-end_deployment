@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AlertTriangle, CheckCircle, ArrowRight } from 'lucide-react';
 
-const SymptomChecker = ({ onBookNow, symptoms = [] }) => {
+const SymptomChecker = ({ onContinue, symptoms = [] }) => {
   const [selectedSymptom, setSelectedSymptom] = useState('');
   const [result, setResult] = useState(null);
 
@@ -82,10 +82,10 @@ const SymptomChecker = ({ onBookNow, symptoms = [] }) => {
 
                 <div className="flex gap-4">
                   <button
-                    onClick={() => onBookNow(result.departmentId)}
+                    onClick={onContinue}
                     className="flex items-center justify-center bg-medical-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-medical-700 transition-colors shadow-lg shadow-medical-200"
                   >
-                    Get Token Now <ArrowRight className="w-4 h-4 ml-2" />
+                    Save Health Record <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
                   {result.urgency === 'Emergency' && (
                     <a
