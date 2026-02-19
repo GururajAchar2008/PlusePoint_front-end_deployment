@@ -27,16 +27,6 @@ const Emergency = () => {
               <span className="block text-3xl font-black tracking-wider">108</span>
             </div>
           </a>
-
-          <button className="w-full bg-white border-2 border-red-100 hover:border-red-300 text-slate-800 p-6 rounded-2xl shadow-sm transition-all flex items-center justify-center gap-4">
-             <div className="bg-red-100 p-3 rounded-full text-red-600">
-              <MapPin className="w-8 h-8" />
-            </div>
-            <div className="text-left">
-              <span className="block text-sm text-slate-500 font-medium">Current Location</span>
-              <span className="block text-lg font-bold">Share with EMS</span>
-            </div>
-          </button>
         </div>
 
         {/* First Aid Steps */}

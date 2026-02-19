@@ -76,8 +76,6 @@ const App = () => {
     }
   };
 
-
-
   return (
     <div className="flex h-screen bg-slate-50 overflow-hidden">
       <Sidebar

@@ -257,18 +257,6 @@ const PrecisionMedicine = () => {
               placeholder="CODEINE, WARFARIN, CLOPIDOGREL"
               className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-700 outline-none focus:border-medical-500 focus:ring-4 focus:ring-medical-100"
             />
-
-            <label className="mb-2 mt-4 block text-sm font-semibold text-slate-700" htmlFor="patient-id">
-              Patient ID (optional)
-            </label>
-            <input
-              id="patient-id"
-              type="text"
-              value={patientId}
-              onChange={(event) => setPatientId(event.target.value)}
-              placeholder="PATIENT_001"
-              className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-700 outline-none focus:border-medical-500 focus:ring-4 focus:ring-medical-100"
-            />
           </div>
         </div>
 
@@ -465,6 +453,23 @@ const PrecisionMedicine = () => {
                         <p className="mt-2 text-xs text-slate-500">
                           Citations: {(report?.llm_generated_explanation?.citations || []).join("; ")}
                         </p>
+                      </div>
+                      <div className="rounded-lg bg-slate-50 p-3">
+                        <div className="flex items-center gap-2 text-slate-800">
+                          <Sparkles className="h-4 w-4 text-medical-600" />
+                          <span className="font-semibold">AI Suggestions</span>
+                        </div>
+                        {(report?.llm_generated_explanation?.care_team_suggestions || []).length > 0 ? (
+                          <ul className="mt-2 list-disc space-y-1 pl-5">
+                            {(report?.llm_generated_explanation?.care_team_suggestions || []).map(
+                              (suggestion, index) => (
+                                <li key={`${report.drug}-suggestion-${index}`}>{suggestion}</li>
+                              )
+                            )}
+                          </ul>
+                        ) : (
+                          <p className="mt-2 text-slate-600">No AI suggestions available for this report.</p>
+                        )}
                       </div>
                     </div>
                   </details>
