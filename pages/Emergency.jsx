@@ -15,7 +15,10 @@ const Emergency = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Quick Actions */}
         <div className="space-y-4">
-          <button className="w-full bg-red-600 hover:bg-red-700 text-white p-6 rounded-2xl shadow-xl shadow-red-200 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-4 group">
+          <a
+            href="tel:108"
+            className="w-full bg-red-600 hover:bg-red-700 text-white p-6 rounded-2xl shadow-xl shadow-red-200 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-4 group"
+          >
             <div className="bg-white/20 p-3 rounded-full group-hover:bg-white/30 transition-colors">
               <Phone className="w-8 h-8" />
             </div>
@@ -23,7 +26,7 @@ const Emergency = () => {
               <span className="block text-sm opacity-90 font-medium">Call Ambulance</span>
               <span className="block text-3xl font-black tracking-wider">108</span>
             </div>
-          </button>
+          </a>
 
           <button className="w-full bg-white border-2 border-red-100 hover:border-red-300 text-slate-800 p-6 rounded-2xl shadow-sm transition-all flex items-center justify-center gap-4">
              <div className="bg-red-100 p-3 rounded-full text-red-600">
