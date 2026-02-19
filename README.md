@@ -6,7 +6,7 @@ Frontend application for the PulsePoint healthcare platform.
 `PulsePoint Frontend`
 
 ## Deployed Link
-- Live Frontend URL: `https://YOUR-FRONTEND-DEPLOYMENT-URL`
+- Live Frontend URL: https://YOUR-FRONTEND-DEPLOYMENT-URL](https://gururajachar2008.github.io/PlusePoint_front-end_deployment/
 - Frontend Repository: `https://github.com/GururajAchar2008/PlusePoint_front-end_deployment.git`
 
 Replace the placeholder with your actual frontend deployment link.
