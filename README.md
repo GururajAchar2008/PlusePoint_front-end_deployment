@@ -66,7 +66,7 @@ Runs on `http://localhost:3000`.
 ## Environment Variables
 Use `Front-end/.env.example` as the template (or create `.env.local`):
 ```bash
-VITE_API_BASE_URL=http://localhost:5000
+VITE_API_BASE_URL=https://plusepoint-backend-deployment.onrender.com
 ```
 
 ## Build
